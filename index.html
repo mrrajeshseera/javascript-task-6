@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>java script 6</title>
+</head>
+<body>
+    <p> 1.create otp 6 digits</p>
+    <p>2.Take age as input from user and calculate the days from given age</p>
+
+<p>3.Calculate the difference between the two dates and return the difference in years, months and days.</p>
+    <script>
+function generateOtp(length) {
+    const char = "seerarajesh123456789";
+    let Otp = '';
+    for (let i = 0; i < length; i++) {
+        Otp += char [Math.floor(Math.random() * char.length)]
+        
+    }
+    return Otp ;
+    
+}console.log(generateOtp(6)); 
+
+
+let age = Number(prompt("enter the person age!"))
+function ageOfPerson(){
+    console.log((age*365.25).toFixed(0))
+
+}
+ageOfPerson()
+
+
+function dateDifference(startDate, endDate) {
+    let years = endDate.getFullYear() - startDate.getFullYear();
+    let months = endDate.getMonth() - startDate.getMonth();
+    let days = endDate.getDate() - startDate.getDate();
+
+    // Adjust for negative values
+    if (days < 0) {
+        months -= 1;
+        days += new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate(); // Days in the previous month
+    }
+
+    if (months < 0) {
+        years -= 1;
+        months += 12;
+    }
+
+    return { years, months, days };
+}
+
+// Input dates
+const startDateInput = prompt("Enter the start date (YYYY-MM-DD):");
+const endDateInput = prompt("Enter the end date (YYYY-MM-DD):");
+
+// Convert input strings to Date objects
+const startDate = new Date(startDateInput);
+const endDate = new Date(endDateInput);
+
+// Calculate the difference
+const { years, months, days } = dateDifference(startDate, endDate);
+
+// Display the result
+console.log(`The difference is ${years} years, ${months} months, and ${days} days.`);
+
+
+    </script>
+</body>
+</html>
